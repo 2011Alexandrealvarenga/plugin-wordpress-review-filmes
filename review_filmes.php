@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name: review filmes
+Plugin Name: Review Filmes
 Plugin URI: www.alexandre.com
 Description: Alterar Rodape
 Version: 1.0
@@ -21,12 +21,21 @@ class review_filmes{
         add_action('init',array($this, 'register_post_type'));
 
     }
-
-
-
+    function register_post_type(){
+        register_post_type('review_filmes', array(
+            'labels' => array(
+                'name' => 'Filmes Review',
+                'singular_name' => 'Filmes Review',
+            ),
+            'description' => 'Post para cadastro de reviews',
+            'supports' => array(
+                'title','editor','except','revisions','thumbnail','custom-fields'
+            ),
+            'public' => TRUE,
+            'menu_position' => 4,
+        ));
+    }
 }
-
-
 review_filmes::getInstance();
 
 
